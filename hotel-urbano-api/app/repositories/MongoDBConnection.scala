@@ -13,6 +13,5 @@ trait MongoDBConnection {
                                                   .getOrElse(Seq("localhost")))
 
   val db = connection(configuration.getString("mongo.scheduler.database")
-                                   .getOrElse("mydb"))
-
+                                   .getOrElse("scheduler"))
 }

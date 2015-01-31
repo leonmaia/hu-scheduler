@@ -6,7 +6,7 @@ import play.api.libs.functional.syntax._
 
 object CityList {
 
-  implicit val bundleListWriter: Writes[CityList] = (
+  implicit val hotelListWriter: Writes[CityList] = (
     (JsPath \ "numberOfcities").write[Int] and
     (JsPath \ "cities").write[Seq[City]]
   )(unlift(unapply))

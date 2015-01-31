@@ -15,5 +15,13 @@ trait SchedulerSpec extends BaseSpec with OptionValues with WsScalaTestClient {
       "cityId" -> JsString(city.id.toString),
       "cityName" -> JsString(city.name.toString)
     ))
+
+  def toJson(hotel: Hotel): JsObject = 
+    JsObject(Seq(
+      "hotelId" -> JsString(hotel.id.toString),
+      "hotelName" -> JsString(hotel.name.toString),
+      "hotelPrice" -> JsString(hotel.price.toString),
+      "cityId" -> JsString(hotel.cityId.toString)
+    ))
 }
 
