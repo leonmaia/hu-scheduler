@@ -9,9 +9,8 @@ class SchedulerAPISpec extends PlaySpec with OneServerPerSuite {
     FakeApplication(
       additionalConfiguration = Map(
         "mongo.connection.uriList" -> Seq("localhost"),
-        "mongo.cities.database" -> "mydb",
-        "mongo.cities.collection" -> "cities",
-        "mongo.bundles.collection" -> "bundles"
+        "mongo.scheduler.database" -> "mydb",
+        "mongo.cities.collection" -> "cities"
       )
     )
 
@@ -23,15 +22,6 @@ class SchedulerAPISpec extends PlaySpec with OneServerPerSuite {
 
       response.status mustBe(OK)
       response.body mustBe("""{"numberOfcities":0,"cities":[]}""")
-    }
-
-    "return a list of bundles" in {
-      val myPublicAddress =  s"localhost:$port"
-      val testPaymentGatewayURL = s"http://$myPublicAddress/bundles"
-      val response = await(WS url(testPaymentGatewayURL) get())
-
-      response.status mustBe(OK)
-      response.body mustBe("""{"numberOfbundles":0,"bundles":[]}""")
     }
   }
 }
