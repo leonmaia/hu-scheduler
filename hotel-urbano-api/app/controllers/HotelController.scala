@@ -2,7 +2,7 @@ package controllers
 
 import java.util.UUID
 
-import models.City
+import models.Hotel
 import play.api.{Play, Configuration}
 import play.api.data.validation.ValidationError
 import play.api.libs.json.Json._
@@ -14,28 +14,33 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Promise, Future}
 import scala.util.{Failure, Success}
 
-trait CityController {
+trait HotelController {
   this: Controller =>
 
-  def repository: CityRepository = ???
+  def repository: HotelRepository = ???
 
-  def index = Action.async {
+  def index()= Action.async {
     repository.list()
-              .map { cityList => Ok(toJson(cityList)) }
+              .map { hotelList => Ok(toJson(hotelList)) }
+  }
+
+  def filter(fromCity: String) = Action.async {
+    repository.list(Some(fromCity))
+              .map { hotelList => Ok(toJson(hotelList)) }
   }
 
   def get(id: String) = Action.async {
-    withCity(id) { city =>
-      Future(Ok(toJson(city)))
+    withHotel(id) { hotel =>
+      Future(Ok(toJson(hotel)))
     }
   }
 
   def create() = Action.async(parse.json) { request =>
-    request.body.validate[City]
+    request.body.validate[Hotel]
                 .fold(
     errors => Future {BadRequest(validationErrors(errors))},
-    city => repository.insert(city)
-                     .map(nothing => Created(obj("cityId" -> city.id)))
+    hotel => repository.insert(hotel)
+                     .map(nothing => Created(obj("hotelId" -> hotel.id)))
                      .recover {
       case iae: IllegalArgumentException => BadRequest(obj("message" -> iae.getMessage))
       case error: Throwable => InternalServerError(obj("error" -> error.getMessage))
@@ -57,14 +62,14 @@ trait CityController {
     }
   }
 
-  private def withCity(id: String)(f: City => Future[Result]): Future[Result] = {
+  private def withHotel(id: String)(f: Hotel => Future[Result]): Future[Result] = {
     try {
-      val cityId = UUID.fromString(id)
-      val city: Future[Option[City]] = repository.find(cityId)
-      city.flatMap { cityOption =>
-        cityOption match {
-          case Some(city) => f(city)
-          case None => Future(NotFound(obj("message" -> s"There is no city with ${cityId} identifier")))
+      val hotelId = UUID.fromString(id)
+      val hotel: Future[Option[Hotel]] = repository.find(hotelId)
+      hotel.flatMap { hotelOption =>
+        hotelOption match {
+          case Some(hotel) => f(hotel)
+          case None => Future(NotFound(obj("message" -> s"There is no hotel with ${hotelId} identifier")))
         }
       }
     }
@@ -75,10 +80,10 @@ trait CityController {
   }
 }
 
-object CityController extends Controller with CityController with MongoDBConnection {
+object HotelController extends Controller with HotelController with MongoDBConnection {
 
-  val collectionName = configuration.getString("mongo.cities.collection")
-                                    .getOrElse("cities")
+  val collectionName = configuration.getString("mongo.hotels.collection")
+                                    .getOrElse("hotels")
 
-  override def repository = new MongoDBCityRepository(db(collectionName))
+  override def repository = new MongoDBHotelRepository(db(collectionName))
 }

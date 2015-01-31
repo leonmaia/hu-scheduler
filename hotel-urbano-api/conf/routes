@@ -5,3 +5,7 @@
 GET     /cities                                controllers.CityController.index
 GET     /cities/:cityId                        controllers.CityController.get(cityId: String)
 POST    /cities                                controllers.CityController.create()
+
+GET     /hotels                                controllers.HotelController.index
+GET     /hotels/cities/:fromCity               controllers.HotelController.filter(fromCity)
+POST    /hotels                                controllers.HotelController.create()

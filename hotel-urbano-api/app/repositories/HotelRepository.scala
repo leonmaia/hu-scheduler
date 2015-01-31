@@ -6,8 +6,8 @@ import scala.concurrent.Future
 
 trait HotelRepository {
   def find(id: UUID): Future[Option[Hotel]]
-  
-  def list(): Future[HotelList]
-  
+
+  def list(fromcity: Option[String] = None): Future[HotelList]
+
   def insert(hotel: Hotel): Future[UUID]
 }

@@ -11,7 +11,7 @@ class SeqHotelRepository(var hotels: Seq[Hotel]) extends HotelRepository {
     hotels.find(_.id == id)
   }
 
-  override def list(): Future[HotelList] = Future(new HotelList(hotels))
+  override def list(fromCity: Option[String] = None): Future[HotelList] = Future(new HotelList(hotels))
 
   override def insert(hotel: Hotel): Future[UUID] = Future(UUID.randomUUID())
 }
