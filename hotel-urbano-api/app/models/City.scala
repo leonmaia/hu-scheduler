@@ -10,15 +10,15 @@ import play.api.libs.json._
 
 object City {
   implicit val cityWriter: Writes[City] = (
-    (JsPath \ "cityId").writeNullable[UUID] and
+    (JsPath \ "cityId").write[UUID] and
     (JsPath \ "cityName").write[String]
   )(unlift(unapply))
 
   implicit val cityReader: Reads[City] = (
-    (JsPath \ "cityId").readNullable[UUID] and
+    (JsPath \ "cityId").read[UUID] and
     (JsPath \ "cityName").read[String]
   )(apply _)
 }
 
-case class City(val id: Option[UUID],
+case class City(val id: UUID,
                 val name: String)

@@ -53,7 +53,7 @@ class MongoDBCityRepository(collection: BSONCollection) extends CityRepository {
     val promise = Promise[UUID]()
 
     collection.insert[City](city) onComplete {
-      case Success(lastError) => promise success(city.id.get)
+      case Success(lastError) => promise success(city.id)
       case Failure(error) => promise failure(error)
     }
 

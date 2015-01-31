@@ -29,6 +29,33 @@ trait CityController {
       Future(Ok(toJson(city)))
     }
   }
+  
+  def create() = Action.async(parse.json) { request =>
+    request.body.validate[City]
+                .fold(
+    errors => Future {BadRequest(validationErrors(errors))},
+    city => repository.insert(city)
+                     .map(nothing => Created(obj("cityId" -> city.id)))
+                     .recover {
+      case iae: IllegalArgumentException => BadRequest(obj("message" -> iae.getMessage))
+      case error: Throwable => InternalServerError(obj("error" -> error.getMessage))
+    }
+   )
+  }
+  
+  def validationErrors(errors: Seq[(JsPath, Seq[ValidationError])]): JsObject = {
+    def toJsonString: Seq[JsString] = {
+      errors.map {_._2}
+            .flatten
+            .map { error => JsString(error.message)}
+    }
+    if (errors.size > 1) {
+      obj("messages" -> JsArray(toJsonString))
+    }
+    else {
+      obj("message" -> toJsonString(0))
+    }
+  }
 
   private def withCity(id: String)(f: City => Future[Result]): Future[Result] = {
     try {

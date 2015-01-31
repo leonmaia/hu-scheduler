@@ -4,3 +4,4 @@
 
 GET     /cities                                controllers.CityController.index
 GET     /cities/:cityId                        controllers.CityController.get(cityId: String)
+POST    /cities                                controllers.CityController.create()

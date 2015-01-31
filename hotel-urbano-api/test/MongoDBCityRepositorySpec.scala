@@ -25,10 +25,10 @@ class MongoDBCityRepositorySpec extends BaseSpec with BeforeAndAfterEach with Sc
 
   val repository = new MongoDBCityRepository(db("testcities"))
 
-  val city1 = City(Some(UUID.fromString("a4065490-8cda-45e4-b42c-ff8f7f792ef4")), "Rio de Janeiro, Rio de Janeiro Estado, Brasil")
-  val city2 = City(Some(UUID.fromString("c7e6baaf-2812-4e3b-8f29-1c489ceadc15")), "Fortaleza, Região Nordeste, Brasil")
-  val city3 = City(Some(UUID.fromString("bc587e57-fe83-4ad9-98a9-7bbf0b930a5c")), "city3")
-  val city4 = City(Some(UUID.fromString("bc587e57-fe83-4ad9-98a9-333333333333")), "city4")
+  val city1 = City(UUID.fromString("a4065490-8cda-45e4-b42c-ff8f7f792ef4"), "Rio de Janeiro, Rio de Janeiro Estado, Brasil")
+  val city2 = City(UUID.fromString("c7e6baaf-2812-4e3b-8f29-1c489ceadc15"), "Fortaleza, Região Nordeste, Brasil")
+  val city3 = City(UUID.fromString("bc587e57-fe83-4ad9-98a9-7bbf0b930a5c"), "city3")
+  val city4 = City(UUID.fromString("bc587e57-fe83-4ad9-98a9-333333333333"), "city4")
 
 
   override def beforeEach {
