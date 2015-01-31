@@ -2,3 +2,5 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET     /cities                                controllers.CityController.index
+GET     /cities/:cityId                        controllers.CityController.get(cityId: String)
