@@ -1,0 +1,41 @@
+<div class="col-sm-12 p-rel">
+  <div class="panel">
+    <div class="panel-heading text-center">
+      <h1 class="h1">H O T &Eacute; I S</h1>
+    </div>
+    <div class="panel-body">
+      <form action="http://localhost:9000/hotels" method="GET" class="form-search-hotel">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+              <div id="hoteis">
+                <input type="text" id="cidadeDestino" class="form-control" placeholder="cidade de destino" autocomplete="off" spellcheck="false" dir="auto">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <input type="text" id="hotelDataIda" class="form-control daterange" placeholder="ida" name="checkin">
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <input type="text" id="hotelDataVolta" class="form-control daterange" placeholder="volta" name="checkout">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="text-center">
+          <button type="submit" class="btn btn-orange" id="btn-search-hotel">
+            Buscar
+          </button>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
