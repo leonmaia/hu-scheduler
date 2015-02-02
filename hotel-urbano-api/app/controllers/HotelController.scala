@@ -26,7 +26,7 @@ trait HotelController {
 
   def filter(fromCity: String) = Action.async {
     repository.list(Some(fromCity))
-              .map { hotelList => Ok(toJson(hotelList)) }
+      .map { hotelList => Ok(toJson(hotelList)) }
   }
 
   def get(id: String) = Action.async {
