@@ -17,7 +17,8 @@ object HotelBSONConverter extends BSONDocumentWriter[Hotel] with BSONDocumentRea
       "hotelId" -> hotel.id.toString,
       "hotelName" -> hotel.name,
       "hotelPrice" -> hotel.price,
-      "cityId" -> hotel.cityId
+      "cityId" -> hotel.cityId,
+      "dates" -> hotel.dates
     )
   }
 
@@ -26,7 +27,7 @@ object HotelBSONConverter extends BSONDocumentWriter[Hotel] with BSONDocumentRea
            bson.getAs[String]("hotelName").get,
            bson.getAs[String]("hotelPrice").get,
            bson.getAs[String]("cityId").get,
-           bson.getAs[Seq[String]]("dates").get.map(DateTime.parse(_,dateFormatter))
+           bson.getAs[Seq[String]]("dates").get
          )
   }
 }
