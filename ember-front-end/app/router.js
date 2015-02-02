@@ -6,8 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('search');
-  this.resource('hotels', {path:'/hotels/:cityId'});
+  this.resource('hotels', {path:'/hotels', queryParams: ['city','checkin','checkout']});
 });
 
 export default Router;
