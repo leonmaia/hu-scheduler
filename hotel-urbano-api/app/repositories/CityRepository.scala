@@ -6,8 +6,8 @@ import scala.concurrent.Future
 
 trait CityRepository {
   def find(id: UUID): Future[Option[City]]
-  
-  def list(): Future[CityList]
-  
+
+  def list(name: Option[String] = None): Future[CityList]
+
   def insert(city: City): Future[UUID]
 }

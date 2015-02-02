@@ -11,7 +11,7 @@ class SeqCityRepository(var cities: Seq[City]) extends CityRepository {
     cities.find(_.id == id)
   }
 
-  override def list(): Future[CityList] = Future(new CityList(cities))
+  override def list(name: Option[String] = None): Future[CityList] = Future(new CityList(cities))
 
   override def insert(city: City): Future[UUID] = Future(UUID.randomUUID())
 }

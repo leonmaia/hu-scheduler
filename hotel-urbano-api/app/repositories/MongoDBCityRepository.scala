@@ -36,18 +36,25 @@ class MongoDBCityRepository(collection: BSONCollection) extends CityRepository {
     promise future
   }
 
-  override def list(): Future[CityList] = {
+  override def list(name: Option[String] = None): Future[CityList] = {
 
     val allSortedByCityName = BSONDocument(
       "$query" -> BSONDocument(),
     "$orderby" -> BSONDocument("cityName" -> 1)
   )
 
-    collection.find(allSortedByCityName)
+    val cities = collection.find(allSortedByCityName)
       .cursor[City](cityConverter, global)
       .collect[Seq]()
-      .map { cities => new CityList(cities) }
-  }
+
+    name match {
+      case None => cities map { cities => new CityList(cities) }
+      case _ => cities.map { cities => {
+        val (passed, failures) = cities.partition(_.name.contains(name.get))
+        new CityList(passed)}
+      }
+    }
+ }
 
   override def insert(city: City): Future[UUID] = {
     val promise = Promise[UUID]()

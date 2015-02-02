@@ -39,28 +39,24 @@ class MongoDBHotelRepository(collection: BSONCollection) extends HotelRepository
   override def list(fromCity: Option[String] = None): Future[HotelList] = {
     fromCity match {
       case None => {
-        val allSortedByHotelName = BSONDocument(
+       doQuery(BSONDocument(
           "$query" -> BSONDocument(),
-        "$orderby" -> BSONDocument("hotelName" -> 1)
-      )
-
-        collection.find(allSortedByHotelName)
-          .cursor[Hotel](hotelConverter, global)
-          .collect[Seq]()
-          .map { hotels => new HotelList(hotels) }
+        "$orderby" -> BSONDocument("hotelName" -> 1)))
       }
       case _ => {
-        val allSortedByHotelName = BSONDocument(
+        doQuery(BSONDocument(
           "$query" -> BSONDocument("cityId" -> fromCity.get),
-        "$orderby" -> BSONDocument("hotelName" -> 1)
-      )
-
-        collection.find(allSortedByHotelName)
-          .cursor[Hotel](hotelConverter, global)
-          .collect[Seq]()
-          .map { hotels => new HotelList(hotels) }
+        "$orderby" -> BSONDocument("hotelName" -> 1)))
       }
     }
+  }
+
+
+  def doQuery(allSortedByHotelName: BSONDocument): Future[HotelList] = {
+  collection.find(allSortedByHotelName)
+    .cursor[Hotel](hotelConverter, global)
+    .collect[Seq]()
+    .map { hotels => new HotelList(hotels) }
   }
 
   override def insert(hotel: Hotel): Future[UUID] = {

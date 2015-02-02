@@ -19,7 +19,7 @@ trait HotelController {
 
   def repository: HotelRepository = ???
 
-  def index(city: Option[String], checkin: Option[String], checkout: Option[String])= Action.async {
+  def index(city: Option[String] = None, checkin: Option[String] = None, checkout: Option[String] = None)= Action.async {
     repository.list(city)
               .map { hotelList => Ok(toJson(hotelList)) }
   }

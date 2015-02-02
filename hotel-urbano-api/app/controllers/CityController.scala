@@ -19,8 +19,8 @@ trait CityController {
 
   def repository: CityRepository = ???
 
-  def index = Action.async {
-    repository.list()
+  def index(name: Option[String] = None) = Action.async {
+    repository.list(name)
               .map { cityList => Ok(toJson(cityList)) }
   }
 
