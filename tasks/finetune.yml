@@ -1,0 +1,8 @@
+---
+
+- name: create symlink of /vagrant folder
+  shell: ln -s /vagrant /home/vagrant/Projects
+
+- name: start at Projects folder
+  shell: echo "cd ~/Projects" >> ~/.zshrc
+

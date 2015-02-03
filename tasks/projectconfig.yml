@@ -1,0 +1,6 @@
+---
+- name: change npm folder permission
+  shell: sudo chown -R vagrant ~/.npm
+
+- name: bower and npm install
+  shell: cd /vagrant/ember-front-end && bower install && npm install

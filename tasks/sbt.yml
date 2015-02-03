@@ -1,0 +1,9 @@
+---
+- name: add sbt distribution package
+  shell: echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+
+- name: install sbt
+  apt: pkg={{ item }} state=latest update_cache=yes
+  sudo: yes
+  with_items:
+    - sbt

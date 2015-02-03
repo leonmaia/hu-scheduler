@@ -1,0 +1,17 @@
+---
+- hosts: all
+  vars:
+    ruby: ruby-2.2.0
+    root_db_password: password
+  tasks:
+    # - name: make sure the system encoding is utf-8
+    #   sudo: yes
+    #   template: src=templates/locale dest=/etc/default/locale
+    #             owner=root group=root mode=644
+
+    # - include: tasks/apt.yml
+    # - include: tasks/mongodb.yml
+    # - include: tasks/jdk.yml
+    # - include: tasks/node.yml
+    # - include: tasks/ember.yml
+    - include: tasks/projectconfig.yml
