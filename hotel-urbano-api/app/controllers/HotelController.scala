@@ -10,7 +10,9 @@ import play.api.libs.json._
 import play.api.mvc._
 import repositories._
 
+import converters.ImplicitBSONConverters._
 import scala.concurrent.ExecutionContext.Implicits.global
+import org.joda.time.LocalDate
 import scala.concurrent.{Promise, Future}
 import scala.util.{Failure, Success}
 
@@ -20,8 +22,12 @@ trait HotelController {
   def repository: HotelRepository = ???
 
   def index(city: Option[String] = None, checkin: Option[String] = None, checkout: Option[String] = None)= Action.async {
-    repository.list(city)
-              .map { hotelList => Ok(toJson(hotelList)) }
+    (checkin, checkout) match {
+      case (None, None) => repository.list(city).map { hotelList => Ok(toJson(hotelList)) }
+      case _ =>
+        repository.list(city, Some(getDaysStream(checkin.get, checkout.get)))
+          .map { hotelList => Ok(toJson(hotelList)) }
+    }
   }
 
   def get(id: String) = Action.async {
@@ -42,6 +48,8 @@ trait HotelController {
     }
    )
   }
+
+  private def dayIterator(start: LocalDate, end: LocalDate) = Stream.iterate(start)(_ plusDays 1) takeWhile (_ isBefore end)
 
   private def validationErrors(errors: Seq[(JsPath, Seq[ValidationError])]): JsObject = {
     def toJsonString: Seq[JsString] = {

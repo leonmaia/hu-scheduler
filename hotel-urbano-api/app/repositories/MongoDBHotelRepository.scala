@@ -1,7 +1,7 @@
 package repositories
 
 import java.util.UUID
-import org.joda.time.DateTime
+import org.joda.time.LocalDate
 
 import converters.HotelBSONConverter
 import models.{Hotel, HotelList}
@@ -37,7 +37,7 @@ class MongoDBHotelRepository(collection: BSONCollection) extends HotelRepository
     promise future
   }
 
-  override def list(fromCity: Option[String] = None, dates: Option[Seq[DateTime]] = None): Future[HotelList] = {
+  override def list(fromCity: Option[String] = None, dates: Option[Stream[LocalDate]] = None): Future[HotelList] = {
     fromCity match {
       case None => {
         doQuery(BSONDocument(
