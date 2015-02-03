@@ -40,15 +40,14 @@ class MongoDBHotelRepository(collection: BSONCollection) extends HotelRepository
   override def list(fromCity: Option[String] = None, dates: Option[Seq[DateTime]] = None): Future[HotelList] = {
     fromCity match {
       case None => {
-       doQuery(BSONDocument(
+        doQuery(BSONDocument(
           "$query" -> BSONDocument(),
-        "$orderby" -> BSONDocument("hotelName" -> 1)))
+          "$orderby" -> BSONDocument("hotelName" -> 1)))
       }
       case _ => {
         doQuery(BSONDocument(
           "$query" -> BSONDocument("cityId" -> fromCity.get),
-        "$orderby" -> BSONDocument("hotelName" -> 1)))
-
+          "$orderby" -> BSONDocument("hotelName" -> 1)))
       }
     }
   }

@@ -21,24 +21,24 @@ object MongoUnit {
       "cityId" -> "bc587e57-fe83-4ad9-98a9-7bbf0b930a5c",
       "cityName" -> "Porto Alegre, Rio Grande do Sul, Regiao Sul, Brasil"
     ))
-    
+
     hotelsCollection.insert(MongoDBObject(
-      "hotelId" -> "c7e6baaf-2812-4e3b-8f29-1c489ceadc15",
+      "hotelId" -> "51075f93-8ccf-4390-bc17-a370bdf7dbf4",
       "hotelName" -> "Fortaleza Park Hotel",
       "hotelPrice" -> "98,99",
-      "cityId" -> "2b"
+      "cityId" -> "c7e6baaf-2812-4e3b-8f29-1c489ceadc152b"
     ))
     hotelsCollection.insert(MongoDBObject(
-      "hotelId" -> "bc587e57-fe83-4ad9-98a9-7bbf0b930a5c",
+      "hotelId" -> "adc64b87-4a9d-42af-89ea-c94dd5ecd6f2",
       "hotelName" -> "Quality Porto Alegre",
       "hotelPrice" -> "100,19",
-      "cityId" -> "3c"
+      "cityId" -> "bc587e57-fe83-4ad9-98a9-7bbf0b930a5c"
     ))
     hotelsCollection.insert(MongoDBObject(
-      "hotelId" -> "a4065490-8cda-45e4-b42c-ff8f7f792ef4",
+      "hotelId" -> "031c94ae-f1a9-49ce-ae6b-88415cc3fea8",
       "hotelName" -> "Vila Galé Rio de Janeiro",
       "hotelPrice" -> "138,00",
-      "cityId" -> "1a"
+      "cityId" -> "a4065490-8cda-45e4-b42c-ff8f7f792ef4"
     ))
   }
 

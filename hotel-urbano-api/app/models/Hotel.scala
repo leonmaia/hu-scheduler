@@ -14,22 +14,22 @@ object Hotel {
     (JsPath \ "hotelId").write[UUID] and
     (JsPath \ "hotelName").write[String] and
     (JsPath \ "hotelPrice").write[String] and
-    (JsPath \ "cityId").write[String] and
-    (JsPath \ "dates").write[Seq[String]]
+    (JsPath \ "cityId").write[UUID] and
+    (JsPath \ "dates").writeNullable[Seq[String]]
   )(unlift(unapply))
 
   implicit val hotelReader: Reads[Hotel] = (
     (JsPath \ "hotelId").read[UUID] and
     (JsPath \ "hotelName").read[String] and
     (JsPath \ "hotelPrice").read[String] and
-    (JsPath \ "cityId").read[String] and
-    (JsPath \ "dates").read[Seq[String]]
+    (JsPath \ "cityId").read[UUID] and
+    (JsPath \ "dates").readNullable[Seq[String]]
   )(apply _)
 }
 
 case class Hotel(val id: UUID,
                  val name: String,
                  val price: String,
-                 val cityId: String,
-                 val dates: Seq[String])
+                 val cityId: UUID,
+                 val dates: Option[Seq[String]] = None)
 

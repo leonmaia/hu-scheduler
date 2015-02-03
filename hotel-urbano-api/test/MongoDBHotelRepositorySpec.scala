@@ -25,20 +25,20 @@ class MongoDBHotelRepositorySpec extends BaseSpec with BeforeAndAfterEach with S
 
   val repository = new MongoDBHotelRepository(db("testhotels"))
 
-  val hotel1 = Hotel(UUID.fromString("c7e6baaf-2812-4e3b-8f29-1c489ceadc15"),
+  val hotel1 = Hotel(UUID.fromString("51075f93-8ccf-4390-bc17-a370bdf7dbf4"),
                      "Fortaleza Park Hotel",
-                     "98,99", "2b")
-   val hotel2 = Hotel(UUID.fromString("bc587e57-fe83-4ad9-98a9-7bbf0b930a5c"), 
+                     "98,99", UUID.fromString("c7e6baaf-2812-4e3b-8f29-1c489ceadc152b"))
+   val hotel2 = Hotel(UUID.fromString("adc64b87-4a9d-42af-89ea-c94dd5ecd6f2"),
                       "Quality Porto Alegre",
-                      "100,19", "3c")
-                     
-  val hotel3 = Hotel(UUID.fromString("a4065490-8cda-45e4-b42c-ff8f7f792ef4"),
+                      "100,19", UUID.fromString("bc587e57-fe83-4ad9-98a9-7bbf0b930a5c"))
+
+  val hotel3 = Hotel(UUID.fromString("031c94ae-f1a9-49ce-ae6b-88415cc3fea8"),
                      "Vila Galé Rio de Janeiro",
-                     "138,00", "1a")                     
+                     "138,00", UUID.fromString("a4065490-8cda-45e4-b42c-ff8f7f792ef4"))
 
   val hotel4 = Hotel(UUID.fromString("bc587e57-fe83-4ad9-98a9-333333333333"),
                      "Xeorghof Berlin",
-                     "44,10", "4e")
+                     "44,10", UUID.fromString("d4e80d6a-a9cb-46af-b3ba-5ef5eadf789d"))
 
   override def beforeEach {
     MongoUnit.cleanAndInsert()
@@ -47,7 +47,7 @@ class MongoDBHotelRepositorySpec extends BaseSpec with BeforeAndAfterEach with S
   describe("MongoDBHotelRepository") {
     describe("#find"){
       it("finds a hotel by id and returns an option") {
-        val hotelId = UUID.fromString("c7e6baaf-2812-4e3b-8f29-1c489ceadc15")
+        val hotelId = UUID.fromString("51075f93-8ccf-4390-bc17-a370bdf7dbf4")
         whenReady(repository.find(hotelId), Timeout(1 minute)) { hotel =>
           hotel should be(Some(hotel1))
         }
