@@ -24,6 +24,6 @@ libraryDependencies ++= Seq(
   cache,
   ws,
   "org.reactivemongo" %% "reactivemongo" % "0.10.5.0.akka23",
-  "org.mongodb" %% "casbah" % "2.8.0" % "test",
+  "org.mongodb" %% "casbah" % "2.8.0",
   "org.scalatestplus" %% "play" % "1.1.0" % "test"
 )

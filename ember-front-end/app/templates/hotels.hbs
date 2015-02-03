@@ -1,9 +1,10 @@
 <div class="row">
-  <div class="large-2 columns">
-    <ul class="side-nav">
-      {{#each}}
-      <li>{{hotelName}}</li>
-      {{/each}}
-    </ul>
+  <div class="col-md-12 packages">
+    {{#each}}
+    <div class="package">
+      <h2 class='name'>{{hotelName}}</h2>
+      <h3>A partir de <strong>R${{hotelPrice}}</strong></h3>
+    </div>
+    {{/each}}
   </div>
 </div>

@@ -52,10 +52,40 @@ body {
 .btn-orange {
   background: #ff7900;
   color: #ffffff !important;
-}
+}#ff7900
 .panel-body .btn-orange {
   border: rgba(235, 116, 9, 0.5) 0 solid;
   border-bottom-width: 2px;
   width: 120px;
   margin: 0px auto;
 }
+
+
+
+
+.packages {
+    padding-left: 50px;
+  }
+  .package h3 {
+    font-size: 18px;
+    font-weight: 200;
+  }
+
+  .package h3 strong {
+    font-size: 24px;
+  }
+  .package {
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+  }
+
+  .package:hover {
+    border-color: rgba(235, 116, 9, 0.5) 0 solid;;
+    background: #F6F6F6;
+  }

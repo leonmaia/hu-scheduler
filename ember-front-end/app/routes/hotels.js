@@ -7,9 +7,8 @@ export default Ember.Route.extend({
       url: 'http://localhost:9000/cities?name='+transition.queryParams.city,
       type: 'get'
     }).then(function(response) {
-      debugger;
       var query = transition.queryParams;
-      var postparams = '?city='+response.cityId+'&checkin='+query.checkin+'&checkout='+query.checkout;
+      var postparams = '?city='+response.cities[0].cityId+'&checkin='+query.checkin+'&checkout='+query.checkout;
       return ajax({
         url: 'http://localhost:9000/hotels'+postparams,
         type: 'get'
