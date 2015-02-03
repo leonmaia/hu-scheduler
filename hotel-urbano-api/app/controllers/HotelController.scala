@@ -23,10 +23,10 @@ trait HotelController {
 
   def index(city: Option[String] = None, checkin: Option[String] = None, checkout: Option[String] = None)= Action.async {
     (checkin, checkout) match {
-      case (None, None) => repository.list(city).map { hotelList => Ok(toJson(hotelList)) }
-      case _ =>
-        repository.list(city, Some(getDaysStream(checkin.get, checkout.get)))
+      case (Some(checkin), Some(checkout)) =>
+        repository.list(city, Some(getDaysStream(checkin, checkout)))
           .map { hotelList => Ok(toJson(hotelList)) }
+      case _ => repository.list(city).map { hotelList => Ok(toJson(hotelList)) }
     }
   }
 
