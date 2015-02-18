@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scheduler">
+  <head>
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  </head>
+  <body ng-controller="SchedulerController as scheduler">
+
+    <div class="panel busca-hotel">
+      <div class="panel-heading hotel-heading">H O T &Eacute; I S</div>
+      <div class="heading-propaganda">+ 170.000 hot&eacute;is, pousadas e resorts no mundo todo.</div>
+      <div class="panel-body">
+
+        <form action="http://localhost:4444/hotels" method="GET"
+          class="form-search-hotel">
+          <div class="row">
+            <div class="col-md-6">
+              <span class="glyphicon glyphicon-map-marker glyphicon-input" aria-hidden="true"></span>
+              <label class="label-form" for="cidadeDestino">Quer ficar onde?</label>
+              <input class="input form-control input-margin" type="text" id="cidadeDestino"
+              placeholder="cidade de destino" autocomplete="off"
+              spellcheck="false" dir="auto" name="cidade">
+            </div>
+
+
+            <div class="col-md-3">
+              <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
+              <label class="label-form" for="dataIda">Quando?</label>
+              <input class="input form-control input-margin" type="text" id="dataIda"
+              placeholder="ida" autocomplete="off"
+              spellcheck="false" dir="auto" name="dataIda">
+            </div>
+
+            <div class="col-md-3">
+              <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
+              <input class="input form-control input-without-label input-margin" type="text" id="dataVolta"
+              placeholder="volta" autocomplete="off"
+              spellcheck="false" dir="auto" name="dataVolta">
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-orange" type="submit" id="btn-search-hotel">
+              BUSCAR
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="busca">
+      <div class="text-center title">
+      </div>
+    </div>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+  </body>
+
+  <style type="text/css">
+    .glyphicon-input {
+      position: absolute;
+      color: #FF7900;
+      top: 34px;
+      left: 22px;
+    }
+    .label-form {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: #828282;
+    }
+    .heading-propaganda {
+      font-family: 'Lato', sans-serif;
+      text-align: center;
+      color: #40bffb;
+      font-size: 15px;
+    }
+    .hotel-heading {
+      font-family: 'Lato', sans-serif;
+      background: #40bffb;
+      height: 40px;
+      font-weight: 100;
+      text-align: center;
+      font-size: 28px;
+      padding: 0;
+      color: #ffffff;
+    }
+    .input-without-label {
+      margin-top: 24px;
+    }
+    .input-margin {
+      padding-left: 24px;
+    }
+    .input {
+      color: #656565;
+      border: #e5e5e5 1px solid;
+      font-weight: 100;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      -webkit-box-shadow: none !important;
+    }
+    input:focus {
+      outline:none;
+    }
+    .input:hover {
+      border-color: #FF7900;
+    }
+    .busca-hotel {
+      width: 455px;
+      border: 1px solid #DEDEDE;
+    }
+    .btn-orange {
+      margin-top:15px;
+      font-family: 'Lato', sans-serif;
+      background: #FF8A21;
+      color: #ffffff;
+      font-weight: 400;
+      letter-spacing: 0.7px;
+      font-size: 14px;
+      width: 150px;
+      height: 35px;
+    }
+  </style>
+</html>
