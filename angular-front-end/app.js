@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('scheduler', []);
+  var app = angular.module('scheduler', ['angularPikaday']);
 
   app.controller("SchedulerController", function() {
     this.hotels = hotels;

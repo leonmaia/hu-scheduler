@@ -14,13 +14,13 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         <div class="item active">
-          <img src="http://s3.amazonaws.com/hu-home-production/uploads/4528ccb4-9b21-4ede-9dfa-bc9eb90256a4/home-top-destinos-HU-4.jpg" alt="...">
+          <img class="carousel-img" src="http://s3.amazonaws.com/hu-home-production/uploads/4528ccb4-9b21-4ede-9dfa-bc9eb90256a4/home-top-destinos-HU-4.jpg">
         </div>
         <div class="item">
-          <img src="http://s3.amazonaws.com/hu-home-production/uploads/f45b783c-665c-4ddc-9eb0-de97bbe37c77/punta-cana3.jpg" alt="...">
+          <img class="carousel-img" src="http://s3.amazonaws.com/hu-home-production/uploads/f45b783c-665c-4ddc-9eb0-de97bbe37c77/punta-cana3.jpg">
         </div>
         <div class="item">
-          <img src="http://s3.amazonaws.com/hu-home-production/uploads/2d244735-64c3-4006-a9a9-941fcbc36a8d/veneza.jpg" alt="...">
+          <img class="carousel-img" src="http://s3.amazonaws.com/hu-home-production/uploads/2d244735-64c3-4006-a9a9-941fcbc36a8d/veneza.jpg">
         </div>
       </div>
 
@@ -35,7 +35,7 @@
     <!-- End Carousel -->
 
     <section class="busca-hotel">
-      <div class="panel">
+      <div class="hu-panel">
         <div class="panel-heading hotel-heading">H O T &Eacute; I S</div>
         <div class="heading-propaganda">+ 170.000 hot&eacute;is, pousadas e resorts no mundo todo.</div>
         <div class="panel-body">
@@ -45,8 +45,8 @@
             <div class="row">
               <div class="col-md-6">
                 <span class="glyphicon glyphicon-map-marker glyphicon-input" aria-hidden="true"></span>
-                <label class="label-form" for="cidadeDestino">Quer ficar onde?</label>
-                <input class="input form-control input-margin" type="text" id="cidadeDestino"
+                <label class="hu-label" for="cidadeDestino">Quer ficar onde?</label>
+                <input class="input hu-input form-control input-margin" type="text" id="cidadeDestino"
                 placeholder="cidade de destino" autocomplete="off"
                 spellcheck="false" dir="auto" name="cidade">
               </div>
@@ -54,17 +54,18 @@
 
               <div class="col-md-3">
                 <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
-                <label class="label-form" for="dataIda">Quando?</label>
-                <input class="input form-control input-margin" type="text" id="dataIda"
+                <label class="hu-label" for="dataIda">Quando?</label>
+                <input class="input hu-input form-control input-margin" type="text" id="dataIda"
                 placeholder="ida" autocomplete="off"
-                spellcheck="false" dir="auto" name="dataIda">
+                spellcheck="false" dir="auto" name="dataIda" pikaday="dataIdaObject">
               </div>
 
               <div class="col-md-3">
                 <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
-                <input class="input form-control input-without-label input-margin" type="text" id="dataVolta"
+                <input class="input hu-input form-control hu-input-no-label input-margin"
+                type="text" id="dataVolta"
                 placeholder="volta" autocomplete="off"
-                spellcheck="false" dir="auto" name="dataVolta">
+                spellcheck="false" dir="auto" name="dataVolta" pikaday="dataVoltaObject">
               </div>
             </div>
             <div class="text-center">
@@ -77,49 +78,33 @@
       </div>
     </section>
     <section class="results">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="results-heading">OS MELHORES DESTINOS COM OS MENORES PRE&Ccedil;OS</div>
           <hr>
           <div class="results-content col-md-12">
-            <div class="packages" ng-repeat="hotel in scheduler.hotels">
+            <div class="packages">
               <div class="package">
-                <h2>{{hotel.name}}</h2>
-                <h3>a partir de <strong>{{hotel.price | currency}}</strong></h3>
+                <div class="package-img">
+                  <img class="package-img" src="http://s3.amazonaws.com/hu-home-production/uploads/1b73c6d1-57ba-4c0a-9de9-f152a95b7958/01%20(1).jpg">
+                </div>
               </div>
+              <h2>{{hotel.name}}</h2>
+              <h3>a partir de <strong>{{hotel.price | currency:"R$"}}</strong></h3>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <div class="results">
-    </body>
+    </div>
+  </section>
+  <div class="results">
+  </body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script src="pikaday.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="pikaday.js"></script>
+  <script type="text/javascript" src="pikaday-angular.js"></script>
+</html>
 
-    <script>
-      var pickerVolta = new Pikaday(
-        {
-        field: document.getElementById('dataVolta'),
-        position: 'bottom left',
-        firstDay: 1,
-        minDate: new Date('2000-01-01'),
-        maxDate: new Date('2020-12-31'),
-        yearRange: [2000,2020]
-      });
-      var pickerIda = new Pikaday(
-        {
-        field: document.getElementById('dataIda'),
-        position: 'bottom left',
-        firstDay: 1,
-        minDate: new Date('2000-01-01'),
-        maxDate: new Date('2020-12-31'),
-        yearRange: [2000,2020]
-      });
-    </script>
-
-  </html>
