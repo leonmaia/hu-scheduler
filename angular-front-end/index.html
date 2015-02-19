@@ -82,15 +82,19 @@
         <div class="row">
           <div class="results-heading">OS MELHORES DESTINOS COM OS MENORES PRE&Ccedil;OS</div>
           <hr>
-          <div class="results-content col-md-12">
-            <div class="packages">
-              <div class="package">
+          <div class="results-content span7 col-md-12">
+            <div class="span7 packages">
+              <div class="package span4" ng-repeat="hotel in scheduler.hotels">
                 <div class="package-img">
                   <img class="package-img" src="http://s3.amazonaws.com/hu-home-production/uploads/1b73c6d1-57ba-4c0a-9de9-f152a95b7958/01%20(1).jpg">
                 </div>
+                <div class="package-header text-center">
+                  <h2>{{hotel.name}}</h2>
+                </div>
+                <div class="package-price text-center">
+                  <h3>Di&aacute;rias a partir de <strong>{{hotel.price | currency:"R$"}}</strong></h3>
+                </div>
               </div>
-              <h2>{{hotel.name}}</h2>
-              <h3>a partir de <strong>{{hotel.price | currency:"R$"}}</strong></h3>
             </div>
           </div>
         </div>

@@ -31,11 +31,12 @@
   font-family: 'Lato', sans-serif;
   background: #40bffb;
   height: 40px;
-  font-weight: 100;
+  font-weight: 300;
   text-align: center;
   font-size: 28px;
   padding: 0;
   color: #ffffff;
+  -webkit-font-smoothing: antialiased;
 }
 .hu-input-no-label {
   margin-top: 24px;
@@ -79,19 +80,29 @@ input:focus {
   border: 1px solid #DEDEDE;
 }
 .packages {
-  padding-left: 100px;
+  padding-left: 232px;
+}
+.package-header {
+  padding-bottom: 49px;
+  margin-top: -60px;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 1px 1px 0px #000000;
+}
+.package h2 {
+  font-size: 24px;
 }
 .package h3 {
   font-size: 18px;
   font-weight: 200;
 }
 .package h3 strong {
-  font-size: 24px;
+  font-size: 18px;
 }
 .package {
   text-align: center;
-  width: 300px;
-  height: 200px;
+  width: 455px;
+  height: 351px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   float: left;
   margin-right: 30px;
