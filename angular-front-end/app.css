@@ -1,0 +1,104 @@
+.busca-hotel {
+  z-index: 0;
+  position: relative;
+  margin: -41px auto;
+
+}
+.glyphicon-input {
+  position: absolute;
+  color: #FF7900;
+  top: 34px;
+  left: 22px;
+}
+.label-form {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: #828282;
+}
+.heading-propaganda {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #40bffb;
+  font-size: 15px;
+}
+.hotel-heading {
+  font-family: 'Lato', sans-serif;
+  background: #40bffb;
+  height: 40px;
+  font-weight: 100;
+  text-align: center;
+  font-size: 28px;
+  padding: 0;
+  color: #ffffff;
+}
+.input-without-label {
+  margin-top: 24px;
+}
+.input-margin {
+  padding-left: 24px;
+}
+.input {
+  color: #656565;
+  border: #e5e5e5 1px solid;
+  font-weight: 100;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  -webkit-box-shadow: none !important;
+}
+input:focus {
+  outline:none;
+}
+.input:hover {
+  border-color: #FF7900;
+}
+.busca-hotel {
+  width: 455px;
+  border: 1px solid #DEDEDE;
+}
+.btn-orange {
+  margin-top:15px;
+  font-family: 'Lato', sans-serif;
+  background: #FF8A21;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 0.7px;
+  font-size: 14px;
+  width: 150px;
+  height: 35px;
+}
+
+.results-heading {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: bold;
+}
+
+
+.packages {
+  padding-left: 100px;
+}
+.package h3 {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.package h3 strong {
+  font-size: 24px;
+}
+.package {
+  text-align: center;
+  width: 300px;
+  height: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}
+
+.package:hover {
+  border-color: rgba(235, 116, 9, 0.5) 0 solid;;
+  background: #F6F6F6;
+}
