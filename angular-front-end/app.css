@@ -78,9 +78,11 @@ input:focus {
 }
 .hu-panel {
   border: 1px solid #DEDEDE;
+  border-radius: 4px 4px 4px 4px;
 }
 .packages {
-  padding-left: 232px;
+  font-family: 'Lato', sans-serif;
+  padding-left: 200px;
 }
 .package-header {
   padding-bottom: 49px;
@@ -94,7 +96,7 @@ input:focus {
 }
 .package h3 {
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 300;
 }
 .package h3 strong {
   font-size: 18px;

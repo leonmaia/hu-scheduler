@@ -40,13 +40,12 @@
         <div class="heading-propaganda">+ 170.000 hot&eacute;is, pousadas e resorts no mundo todo.</div>
         <div class="panel-body">
 
-          <form action="http://localhost:4444/hotels" method="GET"
-            class="form-search-hotel">
+          <form class="form-search-hotel">
             <div class="row">
               <div class="col-md-6">
                 <span class="glyphicon glyphicon-map-marker glyphicon-input" aria-hidden="true"></span>
                 <label class="hu-label" for="cidadeDestino">Quer ficar onde?</label>
-                <input class="input hu-input form-control input-margin" type="text" id="cidadeDestino"
+                <input ng-model="query.cidade" class="input hu-input form-control input-margin" type="text" id="cidadeDestino"
                 placeholder="cidade de destino" autocomplete="off"
                 spellcheck="false" dir="auto" name="cidade">
               </div>
@@ -55,21 +54,21 @@
               <div class="col-md-3">
                 <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
                 <label class="hu-label" for="dataIda">Quando?</label>
-                <input class="input hu-input form-control input-margin" type="text" id="dataIda"
+                <input ng-model="query.dataIda" class="input hu-input form-control input-margin" type="text" id="dataIda"
                 placeholder="ida" autocomplete="off"
                 spellcheck="false" dir="auto" name="dataIda" pikaday="dataIdaObject">
               </div>
 
               <div class="col-md-3">
                 <span class="glyphicon glyphicon-calendar glyphicon-input" aria-hidden="true"></span>
-                <input class="input hu-input form-control hu-input-no-label input-margin"
+                <input ng-model="query.dataVolta" class="input hu-input form-control hu-input-no-label input-margin"
                 type="text" id="dataVolta"
                 placeholder="volta" autocomplete="off"
                 spellcheck="false" dir="auto" name="dataVolta" pikaday="dataVoltaObject">
               </div>
             </div>
             <div class="text-center">
-              <button class="btn btn-orange" type="submit" id="btn-search-hotel">
+              <button ng-click="search()" class="btn btn-orange" type="submit" id="btn-search-hotel">
                 BUSCAR
               </button>
             </div>
@@ -79,12 +78,12 @@
     </section>
     <section class="results">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row-fluid">
           <div class="results-heading">OS MELHORES DESTINOS COM OS MENORES PRE&Ccedil;OS</div>
           <hr>
-          <div class="results-content span7 col-md-12">
-            <div class="span7 packages">
-              <div class="package span4" ng-repeat="hotel in scheduler.hotels">
+          <div class="results-content col-md-12">
+            <div class="packages">
+              <div class="package" ng-repeat="hotel in scheduler.hotels">
                 <div class="package-img">
                   <img class="package-img" src="http://s3.amazonaws.com/hu-home-production/uploads/1b73c6d1-57ba-4c0a-9de9-f152a95b7958/01%20(1).jpg">
                 </div>

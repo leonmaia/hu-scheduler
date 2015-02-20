@@ -1,9 +1,19 @@
 (function() {
   var app = angular.module('scheduler', ['angularPikaday']);
 
-  app.controller("SchedulerController", function() {
+  app.controller("SchedulerController", ['$scope', '$filter', '$http', function($scope, $filter, $http) {
     this.hotels = hotels;
-  });
+
+    $scope.search = function() {
+      var checkinDate = $filter('date')($scope.query.dataVolta, "dd/MM/yyyy");
+      var checkoutDate = $filter('date')($scope.query.dataVolta, "dd/MM/yyyy");
+    };
+
+    var getCityId = function(query) {
+      $http.get('http://127.0.0.1,q')
+
+    };
+  }]);
 
   var hotels = [
   {
